@@ -1,7 +1,10 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Outfit } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import Provider from "./provider";
+
+const outfit = Outfit({ subset:["latin"]});
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,7 +26,7 @@ export default function RootLayout({ children }) {
     <ClerkProvider>
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={outfit.className}
       >
         <Provider>
           {children}
