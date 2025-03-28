@@ -34,7 +34,22 @@ export default function CardPage({ params }) {
 
       {slug == "dashboard-content-2" && (
         <div className="mt-4">
-          <Card className="!w-full"/>
+          <Card 
+            title="Card 3"
+            className="!w-full"
+            showButton={false}          
+          />
+
+        </div>
+      )}
+
+      {slug == "dashboard-content-2" && (
+        <div className="mt-4">
+          <Card 
+            title="Card 4"
+            className="!w-full"
+            showButton={false}          
+          />
 
         </div>
       )}
