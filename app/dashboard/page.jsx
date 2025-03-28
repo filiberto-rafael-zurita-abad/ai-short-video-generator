@@ -6,9 +6,9 @@ import { cardsData } from "./(data)/cardsData";
 export default function Home() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-      <Card {...cardsData} />
-      <Card {...cardsData} />
-      <Card {...cardsData} />
+      {cardsData.map((card, index) => (
+        <Card key={index} {...card} />
+      ))}
     </div>
   );
 }
