@@ -6,7 +6,7 @@ export const cardsData = [
     slug: "dashboard-content-1",
   },
   {
-    title: "Gym Tracker",
+    title: "Fitness Tracker",
     content: "Nisi elit aliquet nisl, nec ultrices nisi elit id justo. Sed euismod, urna id volutpat tincidunt.",
     buttonText: "Click me",
     slug: "dashboard-content-2",
