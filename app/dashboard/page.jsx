@@ -1,5 +1,3 @@
-import { Button } from "@/components/ui/button";
-import { UserButton } from "@clerk/nextjs";
 import Card from "@/components/ui/Card";
 import { cardsData } from "./(data)/cardsData";
 
