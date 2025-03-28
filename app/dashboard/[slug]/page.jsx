@@ -2,8 +2,8 @@ import { cardsData } from "@/app/dashboard/(data)/cardsData";
 import Banner from "@/components/ui/Banner";
 import Card from "@/components/ui/Card";
 
-export default function CardPage({ params }) {
-  const { slug } = params;
+export default async function CardPage({ params }) {
+  const { slug } = await params;
   const card = cardsData.find((card) => card.slug === slug);
 
   if (!card) {
@@ -37,9 +37,18 @@ export default function CardPage({ params }) {
           <Card 
             title="Card 3"
             className="!w-full"
-            showButton={false}          
-          />
-
+            showButton={false}
+            tableData={{
+              headers: ["hello", "world"],
+              rows: [
+                [1, 6],
+                [2, 7],
+                [3, 8],
+                [4, 9],
+                [5, 10],
+              ],
+            }}
+        />
         </div>
       )}
 
@@ -49,12 +58,8 @@ export default function CardPage({ params }) {
             title="Card 4"
             className="!w-full"
             showButton={false}          
-          />
-
+        />
         </div>
       )}
-
-
-    </div>
-  );
-}
+  </div>
+  ); }
