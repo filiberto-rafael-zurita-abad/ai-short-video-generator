@@ -1,12 +1,12 @@
 export const cardsData = [
   {
-    title: "Dashboard Content 1",
+    title: "Calories Tracker",
     content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, urna id volutpat tincidunt.",
     buttonText: "Click me",
     slug: "dashboard-content-1",
   },
   {
-    title: "Dashboard Content 2",
+    title: "Gym Tracker",
     content: "Nisi elit aliquet nisl, nec ultrices nisi elit id justo. Sed euismod, urna id volutpat tincidunt.",
     buttonText: "Click me",
     slug: "dashboard-content-2",
