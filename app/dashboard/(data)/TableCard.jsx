@@ -1,11 +1,11 @@
 const tableData = {
-  headers: ["hello", "world"],
+  headers: ["Id","User", "Date", "Time", "Type","Weight", "Reps","Calories", "Start Time", "End Time", "Total Time", "Note"],
   rows: [
-    [1, 6],
-    [2, 7],
-    [3, 8],
-    [4, 9],
-    [5, 10],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   ],
 };
 

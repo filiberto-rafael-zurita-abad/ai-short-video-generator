@@ -17,14 +17,14 @@ export default async function CardPage({ params }) {
       {slug === "dashboard-content-2" && (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-4">
           <Card
-            title="Card 1"
+            title="Card 1: Workout App"
             content="This is the first card."
             buttonText="Click me"
             slug="card-1"
             className="!w-full"
           />
           <Card
-            title="Card 2"
+            title="Card 2: Add Workout"
             content="This is the second card."
             buttonText="Click me"
             slug="card-2"
@@ -36,7 +36,7 @@ export default async function CardPage({ params }) {
       {slug == "dashboard-content-2" && (
         <div className="mt-4">
           <Card 
-            title="Card 3"
+            title="Card 3: Workout History"
             className="!w-full"
             showButton={false}
             tableData={tableData}
@@ -47,7 +47,7 @@ export default async function CardPage({ params }) {
       {slug == "dashboard-content-2" && (
         <div className="mt-4">
           <Card 
-            title="Card 4"
+            title="Card 4: Workout Types"
             className="!w-full"
             showButton={false}          
         />
