@@ -7,7 +7,7 @@ export const cardsData = [
   },
   {
     title: "Fitness Tracker",
-    content: "Nisi elit aliquet nisl, nec ultrices nisi elit id justo. Sed euismod, urna id volutpat tincidunt.",
+    content: "Begin each day by telling yourself: today I shall be met with interference, ingratitude, insolence, disloyalty, ill-will, and selfishness - all of them due to the offenders’ ignorance of what is good or evil.",
     buttonText: "Click me",
     slug: "dashboard-content-2",
   },

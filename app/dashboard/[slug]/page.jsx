@@ -1,6 +1,7 @@
 import { cardsData } from "@/app/dashboard/(data)/cardsData";
 import Banner from "@/components/ui/Banner";
 import Card from "@/components/ui/Card";
+import { tableData } from "@/app/dashboard/(data)/TableCard"; // Import the table data
 
 export default async function CardPage({ params }) {
   const { slug } = await params;
@@ -38,16 +39,7 @@ export default async function CardPage({ params }) {
             title="Card 3"
             className="!w-full"
             showButton={false}
-            tableData={{
-              headers: ["hello", "world"],
-              rows: [
-                [1, 6],
-                [2, 7],
-                [3, 8],
-                [4, 9],
-                [5, 10],
-              ],
-            }}
+            tableData={tableData}
         />
         </div>
       )}
