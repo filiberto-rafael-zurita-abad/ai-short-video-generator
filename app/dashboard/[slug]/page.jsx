@@ -1,7 +1,7 @@
 import { cardsData } from "@/app/dashboard/(data)/cardsData";
 import Banner from "@/components/ui/Banner";
 import Card from "@/components/ui/Card";
-import { tableData } from "@/app/dashboard/(data)/TableCard"; // Import the table data
+import tableData from "@/app/dashboard/(data)/TableCard"; 
 
 export default async function CardPage({ params }) {
   const { slug } = await params;

@@ -2,8 +2,7 @@ import { Button } from "@/components/ui/button";
 import { UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 
-export default function Card({ title, content, buttonText, slug, className, showButton, 
-  tableData, children }) {
+export default function Card({ title, content, buttonText, slug, className, showButton, tableData, children }) {
   return (
     
       <div className={`border rounded-md p-4 w-95 h-62 ${className || ""}`}>
@@ -21,8 +20,8 @@ export default function Card({ title, content, buttonText, slug, className, show
           <table>
             <thead>
               <tr>
-                {tableData.headers.map((header) => (
-                  <th key={header}>{header}</th>
+                {tableData.headers.map((header, index) => (
+                  <th key={index}>{header}</th>
                 ))}
               </tr>
             </thead>
