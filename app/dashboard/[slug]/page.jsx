@@ -1,7 +1,8 @@
 import { cardsData } from "@/app/dashboard/(data)/cardsData";
 import Banner from "@/components/ui/Banner";
 import Card from "@/components/ui/Card";
-import tableData from "@/app/dashboard/(data)/TableCard"; 
+import workoutHistory from "@/app/dashboard/(data)/WorkoutHistory";
+import workoutTypes from "../(data)/WorkoutTypes";
 
 export default async function CardPage({ params }) {
   const { slug } = await params;
@@ -19,16 +20,17 @@ export default async function CardPage({ params }) {
           <Card
             title="Card 1: Workout App"
             content="This is the first card."
-            buttonText="Click me"
+            buttonText="Add Excercise"
             slug="card-1"
             className="!w-full"
           />
           <Card
             title="Card 2: Add Workout"
-            content="This is the second card."
-            buttonText="Click me"
+            buttonText="Add Workout"
             slug="card-2"
             className="!w-full"
+            inputField={{ title1: "Set", title2: "Reps" }}
+            
           />
         </div>
       )}
@@ -39,9 +41,11 @@ export default async function CardPage({ params }) {
             title="Card 3: Workout History"
             className="!w-full"
             showButton={false}
-            tableData={tableData}
+            tableData={workoutHistory}
         />
         </div>
+
+        
       )}
 
       {slug == "dashboard-content-2" && (
@@ -49,7 +53,8 @@ export default async function CardPage({ params }) {
           <Card 
             title="Card 4: Workout Types"
             className="!w-full"
-            showButton={false}          
+            showButton={false}      
+            tableData={workoutTypes}    
         />
         </div>
       )}
