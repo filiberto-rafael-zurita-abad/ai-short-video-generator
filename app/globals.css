@@ -43,6 +43,89 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
+.table-responsive-container {
+  overflow-x: auto;
+}
+
+.responsive-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.responsive-table th,
+.responsive-table td {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+/* Medium screens and up - Horizontal Scroll */
+@media (min-width: 768px) {
+  .responsive-table {
+    display: table;
+  }
+
+  .responsive-table thead {
+    display: table-header-group;
+  }
+
+  .responsive-table tbody {
+    display: table-row-group;
+  }
+
+  .responsive-table tr {
+    display: table-row;
+  }
+
+  .responsive-table th,
+  .responsive-table td {
+    display: table-cell;
+  }
+
+  .responsive-table td[data-title]:before {
+    content: none;
+  }
+}
+
+/* Small screens - Card Layout */
+@media (max-width: 767px) {
+  .responsive-table {
+    display: block;
+  }
+
+  .responsive-table thead {
+    display: none;
+  }
+
+  .responsive-table tbody {
+    display: block;
+  }
+
+  .responsive-table tr {
+    display: block;
+    margin-bottom: 0.5rem;
+    border: 1px solid #ddd;
+  }
+
+  .responsive-table td {
+    display: block;
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+    border: none;
+  }
+
+  .responsive-table td:before {
+    content: attr(data-title);
+    position: absolute;
+    left: 0;
+    width: 50%;
+    padding-left: 0.5rem;
+    text-align: left;
+    font-weight: bold;
+  }
+}
+
 :root {
   --radius: 0.625rem;
   --card: oklch(1 0 0);
@@ -144,6 +227,7 @@
   vertical-align: top;
   border-top: 1px solid #dee2e6;
   text-align: left;
+  
 }
 
 .responsive-table thead th {

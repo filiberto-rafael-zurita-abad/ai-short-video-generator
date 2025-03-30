@@ -9,8 +9,7 @@ import {
   CalendarUI,
   TimeSelector,
 } from "@/components/ui/input-fields";
-
-
+import WorkoutTable from "@/components/WorkoutTable";
 
 export default function Card({ title, content, buttonText, slug, className, showButton, tableData, children,
   inputFields }) {
@@ -72,31 +71,7 @@ export default function Card({ title, content, buttonText, slug, className, show
 
         {/*Table*/}
         {tableData && (
-          <div className="table-responsive-container">
-            <table className="responsive-table">
-              <thead>
-                <tr>
-                  {tableData.headers.map((header, index) => (
-                    <th key={index}>{header}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {tableData.rows.map((row, rowIndex) => (
-                  <tr key={rowIndex}>
-                    {row.map((cell, cellIndex) => (
-                      <td 
-                        key={cellIndex} 
-                        data-title={tableData.headers[cellIndex]}
-                      >
-                        {cell}
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <WorkoutTable headers={tableData.headers} rows={tableData.rows} />
         )}
 
         {children}
