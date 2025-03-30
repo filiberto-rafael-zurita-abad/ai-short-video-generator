@@ -29,9 +29,7 @@ export default async function CardPage({ params }) {
             buttonText="Add Workout"
             slug="card-2"
             className="!w-full"
-            inputFields={["Workout Name", "Weight (Kg)", "Weight (lb)", "CPR"]}
-            
-            
+            inputFields={["Workout Name", "Weight", "QS-Sets", "VA-Reps", "CUI-Date", "TS-Time"]}
           />
         </div>
       )}
