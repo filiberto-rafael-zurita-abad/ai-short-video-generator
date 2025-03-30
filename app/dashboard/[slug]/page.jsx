@@ -28,9 +28,10 @@ export default async function CardPage({ params }) {
             title="Card 2: Add Workout"
             buttonText="Add Workout"
             slug="card-2"
-            className="!w-full"
-            inputFields={["Workout Name", "Weight", "QS-Sets", "VA-Reps", "CUI-Date", "TS-Time"]}
+            className="!w-full grid grid-cols-1 gap-4"
+            inputFields={["Workout Name", "Weight (Kg)", "Weight (lb)", "CRP"]}
           />
+            
         </div>
       )}
 
