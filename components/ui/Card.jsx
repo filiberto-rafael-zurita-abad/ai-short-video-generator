@@ -73,19 +73,22 @@ default:
 
                   if (title === "Weight (Kg)") {
                     inputValue = weightKg;
- onChangeHandler = (e) => {
+                  } else if (title === "Weight (lb)") {
+                    inputValue = weightLb;
+                  }
+ 
+
+                  onChangeHandler = (e) => {
+                    if (title === "Weight (Kg)") {
                       const newWeightKg = e.target.value;
                       setWeightKg(newWeightKg);
                       setWeightLb(kgToLb(newWeightKg));
-                    };
-                  } else if (title === "Weight (lb)") {
-                    inputValue = weightLb;
-                    onChangeHandler = (e) => {
+                    } else if (title === "Weight (lb)") {
                       const newWeightLb = e.target.value;
                       setWeightLb(newWeightLb);
                       setWeightKg(lbToKg(newWeightLb));
-                    };
-                  }
+                    }
+                  };
  
 
                   inputField = (
