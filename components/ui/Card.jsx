@@ -10,9 +10,28 @@ import {
   TimeSelector,
 } from "@/components/ui/input-fields";
 import WorkoutTable from "@/components/WorkoutTable";
+import { useState } from "react";
 
 export default function Card({ title, content, buttonText, slug, className, showButton, tableData, children,
   inputFields }) {
+  // State variables for weight conversion
+  const [weightKg, setWeightKg] = useState("0");
+  const [weightLb, setWeightLb] = useState("0");
+ 
+
+  // Conversion functions
+  const kgToLb = (kg) => {
+    if (kg === "") return "";
+    return (kg * 2.20462).toFixed(2);
+  };
+ 
+
+  const lbToKg = (lb) => {
+    if (lb === "") return "";
+    return (lb * 0.453592).toFixed(2);
+  };
+ 
+
   return (
     
       <div className={`flex flex-col justify-between border rounded-md p-4 w-95  ${className || ""}`}>
@@ -47,7 +66,28 @@ export default function Card({ title, content, buttonText, slug, className, show
                 case "TS":
                   inputField = <TimeSelector title={title} />;
                   break;
-                default:
+default:
+                  let inputValue = "";
+                  let onChangeHandler = null;
+ 
+
+                  if (title === "Weight (Kg)") {
+                    inputValue = weightKg;
+ onChangeHandler = (e) => {
+                      const newWeightKg = e.target.value;
+                      setWeightKg(newWeightKg);
+                      setWeightLb(kgToLb(newWeightKg));
+                    };
+                  } else if (title === "Weight (lb)") {
+                    inputValue = weightLb;
+                    onChangeHandler = (e) => {
+                      const newWeightLb = e.target.value;
+                      setWeightLb(newWeightLb);
+                      setWeightKg(lbToKg(newWeightLb));
+                    };
+                  }
+ 
+
                   inputField = (
                     <div>
                       <label htmlFor={`input-field-${index}`}>{title}</label>
@@ -55,6 +95,8 @@ export default function Card({ title, content, buttonText, slug, className, show
                         type="text"
                         id={`input-field-${index}`}
                         className="border rounded-md p-2 w-full"
+                        value={inputValue}
+                        onChange={onChangeHandler}
                       />
                     </div>
                   );

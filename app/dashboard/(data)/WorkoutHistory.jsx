@@ -1,5 +1,5 @@
 const workoutHistory = {
-  headers: ["Id","User", "User Type", "Date", "Time", "Type","Weight", "Reps","Calories", "Start Time", "End Time", "Total Time", "Note"],
+  headers: ["Id","User", "User Type", "Date-Time", "Type","Weight", "Reps","Calories", "Start Time", "End Time", "Total Time", "Note"],
   rows: [
     [1, "fmasz6@gmail.com", "Normal", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [2, "fmasz6@gmail.com", "Normal", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
