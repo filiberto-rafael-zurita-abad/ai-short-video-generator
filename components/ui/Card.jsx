@@ -72,24 +72,31 @@ export default function Card({ title, content, buttonText, slug, className, show
 
         {/*Table*/}
         {tableData && (
-          <table>
-            <thead>
-              <tr>
-                {tableData.headers.map((header, index) => (
-                  <th key={index}>{header}</th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {tableData.rows.map((row, index) => (
-                <tr key={index}>
-                  {row.map((cell, index) => (
-                    <td key={index}>{cell}</td>
+          <div className="table-responsive-container">
+            <table className="responsive-table">
+              <thead>
+                <tr>
+                  {tableData.headers.map((header, index) => (
+                    <th key={index}>{header}</th>
                   ))}
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {tableData.rows.map((row, rowIndex) => (
+                  <tr key={rowIndex}>
+                    {row.map((cell, cellIndex) => (
+                      <td 
+                        key={cellIndex} 
+                        data-title={tableData.headers[cellIndex]}
+                      >
+                        {cell}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         )}
 
         {children}

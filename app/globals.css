@@ -120,3 +120,88 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Base table styling */
+.table-responsive-container {
+  width: 100%;
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.responsive-table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  border-collapse: collapse;
+  border-spacing: 0;
+  background-color: transparent;
+}
+
+.responsive-table th,
+.responsive-table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+  text-align: left;
+}
+
+.responsive-table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+  background-color: #f8f9fa;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.responsive-table tbody tr:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.responsive-table tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.075);
+}
+
+/* Standard responsive behavior: horizontal scrolling */
+@media screen and (max-width: 992px) {
+  .table-responsive-container {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+  
+  .responsive-table {
+    width: auto;
+    max-width: none;
+  }
+}
+
+/* For very small screens: horizontal scrolling */
+@media screen and (max-width: 576px) {
+  .table-responsive-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .responsive-table {
+    width: auto;
+    min-width: 100%;
+  }
+
+  .responsive-table thead {
+    display: table-header-group;
+  }
+
+  .responsive-table td {
+    display: table-cell;
+    border: 1px solid #dee2e6;
+    text-align: left;
+  }
+
+  .responsive-table td::before {
+    display: none;
+  }
+}
