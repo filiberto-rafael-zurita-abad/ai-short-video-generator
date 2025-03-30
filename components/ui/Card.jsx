@@ -16,7 +16,7 @@ export default function Card({ title, content, buttonText, slug, className, show
   inputFields }) {
   return (
     
-      <div className={`border rounded-md p-4 w-95 h-62 ${className || ""}`}>
+      <div className={`flex flex-col justify-between border rounded-md p-4 w-95  ${className || ""}`}>
 
         {/*Title*/}
         <div className="flex justify-between items-center">
@@ -28,7 +28,7 @@ export default function Card({ title, content, buttonText, slug, className, show
 
         {/*Input Fields*/}
         {inputFields && (
-          <div className="flex flex-wrap">
+          <div className="flex flex-wrap gap-4">
             {inputFields.map((inputFieldTitle, index) => {
               const type = inputFieldTitle.split('-')[0];
               const title = inputFieldTitle.split('-')[1] || inputFieldTitle;
@@ -62,7 +62,7 @@ export default function Card({ title, content, buttonText, slug, className, show
               }
 
               return (
-                <div key={index} className="w-full md:w-1/2">
+                <div key={index} className="w-full md:w-70">
                   {inputField}
                 </div>
               );
