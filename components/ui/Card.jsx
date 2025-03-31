@@ -10,13 +10,20 @@ import {
   TimeSelector,
 } from "@/components/ui/input-fields";
 import WorkoutTable from "@/components/WorkoutTable";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useUser } from "@clerk/nextjs";
+import workoutTypes from "@/app/dashboard/(data)/WorkoutTypes";
+import { toast } from 'react-toastify';
 
 export default function Card({ title, content, buttonText, slug, showButton, tableData, children,
   inputFields, className = "" }) {
   // State variables for weight conversion
-  const [weightKg, setWeightKg] = useState("0");
-  const [weightLb, setWeightLb] = useState("0");
+  const [weightKg, setWeightKg] = useState("");
+  const [weightLb, setWeightLb] = useState("");
+  const [workoutName, setWorkoutName] = useState("");
+  const [CRP, setCRP] = useState("");
+
+  const { user } = useUser();
  
 
   // Conversion functions
@@ -29,6 +36,45 @@ export default function Card({ title, content, buttonText, slug, showButton, tab
   const lbToKg = (lb) => {
     if (lb === "") return "";
     return (lb * 0.453592).toFixed(2);
+  };
+
+  const handleAddWorkout = async () => {
+    if (isNaN(Number(weightKg)) || isNaN(Number(weightLb)) || isNaN(Number(CRP))) {
+      toast.error("Weight (Kg), Weight (lb), and CRP must be numeric values.");
+      return;
+    }
+
+    try {
+      const newWorkout = {
+        Id: workoutTypes.rows.length + 1,
+        User: user?.primaryEmailAddress?.emailAddress || "unknown",
+        DateTime: new Date().toLocaleString(),
+        Name: workoutName,
+        WeightKg: weightKg,
+        WeightLb: weightLb,
+        CRP: CRP,
+      };
+
+      const response = await fetch('/api/add-workout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ workout: newWorkout }),
+      });
+
+      if (response.ok) {
+        toast.success('Workout added successfully!');
+        setWorkoutName("");
+        setWeightKg("");
+        setWeightLb("");
+        setCRP("");
+      } else {
+        toast.error(`Error adding workout: ${response.statusText}`);
+      }
+    } catch (error) {
+      toast.error(`Error adding workout: ${error}`);
+    }
   };
  
 
@@ -69,27 +115,32 @@ export default function Card({ title, content, buttonText, slug, showButton, tab
 default:
                   let inputValue = "";
                   let onChangeHandler = null;
- 
 
-                  if (title === "Weight (Kg)") {
+                  if (title === "Workout Name") {
+                    inputValue = workoutName;
+                    onChangeHandler = (e) => {
+                      setWorkoutName(e.target.value);
+                    };
+                  } else if (title === "Weight (Kg)") {
                     inputValue = weightKg;
-                  } else if (title === "Weight (lb)") {
-                    inputValue = weightLb;
-                  }
- 
-
-                  onChangeHandler = (e) => {
-                    if (title === "Weight (Kg)") {
+                    onChangeHandler = (e) => {
                       const newWeightKg = e.target.value;
                       setWeightKg(newWeightKg);
                       setWeightLb(kgToLb(newWeightKg));
-                    } else if (title === "Weight (lb)") {
+                    };
+                  } else if (title === "Weight (lb)") {
+                    inputValue = weightLb;
+                    onChangeHandler = (e) => {
                       const newWeightLb = e.target.value;
                       setWeightLb(newWeightLb);
                       setWeightKg(lbToKg(newWeightLb));
-                    }
-                  };
- 
+                    };
+                  } else if (title === "CRP") {
+                    inputValue = CRP;
+                    onChangeHandler = (e) => {
+                      setCRP(e.target.value);
+                    };
+                  }
 
                   inputField = (
                     <div>
@@ -125,7 +176,7 @@ default:
         
         <div className={className} style={{display: "inline-block", alignSelf: "flex-start"}}>
           <Link href={`/dashboard/${slug}`}>
-            {showButton !== false && <Button>{buttonText}</Button>}
+            {showButton !== false && <Button onClick={handleAddWorkout}>{buttonText}</Button>}
           </Link>
         </div>
       </div>
