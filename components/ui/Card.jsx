@@ -12,8 +12,8 @@ import {
 import WorkoutTable from "@/components/WorkoutTable";
 import { useState } from "react";
 
-export default function Card({ title, content, buttonText, slug, className, showButton, tableData, children,
-  inputFields }) {
+export default function Card({ title, content, buttonText, slug, showButton, tableData, children,
+  inputFields, className = "" }) {
   // State variables for weight conversion
   const [weightKg, setWeightKg] = useState("0");
   const [weightLb, setWeightLb] = useState("0");
@@ -123,9 +123,11 @@ default:
 
         {/*Button*/}
         
-        <Link href={`/dashboard/${slug}`}>
-          {showButton !== false && <Button>{buttonText}</Button>}
-        </Link>
+        <div className={className} style={{display: "inline-block", alignSelf: "flex-start"}}>
+          <Link href={`/dashboard/${slug}`}>
+            {showButton !== false && <Button>{buttonText}</Button>}
+          </Link>
+        </div>
       </div>
    
   );

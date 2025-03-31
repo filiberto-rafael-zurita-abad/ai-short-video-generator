@@ -21,14 +21,14 @@ export default async function CardPage({ params }) {
             title="Card 1: Workout App"
             content="This is the first card."
             buttonText="Add Excercise"
-            slug="card-1"
-            className="!w-full min-h-68"
+            slug="/dashboard-content-2"
+            className="!w-full grid grid-cols-1 gap-4"
           />
           <Card
             title="Card 2: Add Workout"
             buttonText="Add Workout"
-            slug="card-2"
-            className="!w-full grid grid-cols-1 gap-4 min-h-68"
+            slug="/dashboard-content-2"
+            className="!w-full grid grid-cols-1 gap-4 "
             inputFields={["Workout Name", "Weight (Kg)", "Weight (lb)", "CRP"]}
           />
             
