@@ -23,6 +23,7 @@ export default async function CardPage({ params }) {
             buttonText="Add Excercise"
             slug="/dashboard-content-2"
             className="!w-full grid grid-cols-1 gap-4"
+            handlerType="none"
           />
           <Card
             title="Card 2: Add Workout"
@@ -30,6 +31,7 @@ export default async function CardPage({ params }) {
             slug="/dashboard-content-2"
             className="!w-full grid grid-cols-1 gap-4 "
             inputFields={["Workout Name", "Weight (Kg)", "Weight (lb)", "CRP"]}
+            handlerType="addWorkout"
           />
             
         </div>

@@ -16,7 +16,7 @@ import workoutTypes from "@/app/dashboard/(data)/WorkoutTypes";
 import { toast } from 'react-toastify';
 
 export default function Card({ title, content, buttonText, slug, showButton, tableData, children,
-  inputFields, className = "" }) {
+  inputFields, className = "", handlerType }) { // Add handlerType to props
   // State variables for weight conversion
   const [weightKg, setWeightKg] = useState("");
   const [weightLb, setWeightLb] = useState("");
@@ -76,7 +76,21 @@ export default function Card({ title, content, buttonText, slug, showButton, tab
       toast.error(`Error adding workout: ${error}`);
     }
   };
- 
+
+  const handleClick = () => {
+    switch (handlerType) {
+      case "addWorkout":
+        handleAddWorkout();
+        break;
+      case "addExercise":
+        // Handle add exercise logic here
+        break;
+      case "none":
+      default:
+        // Do nothing
+        break;
+    }
+  };
 
   return (
     
@@ -112,7 +126,7 @@ export default function Card({ title, content, buttonText, slug, showButton, tab
                 case "TS":
                   inputField = <TimeSelector title={title} />;
                   break;
-default:
+                default:
                   let inputValue = "";
                   let onChangeHandler = null;
 
@@ -176,7 +190,7 @@ default:
         
         <div className={className} style={{display: "inline-block", alignSelf: "flex-start"}}>
           <Link href={`/dashboard/${slug}`}>
-            {showButton !== false && <Button onClick={handleAddWorkout}>{buttonText}</Button>}
+            {showButton !== false && <Button onClick={handleClick}>{buttonText}</Button>}
           </Link>
         </div>
       </div>

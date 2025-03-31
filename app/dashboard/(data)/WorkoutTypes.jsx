@@ -12,7 +12,7 @@ let workoutTypes = {
     [
       1,
       "fmasz6@gmail.com",
-      0,
+      "0",
       "Warm-up",
       0,
       0,
@@ -21,7 +21,7 @@ let workoutTypes = {
     [
       2,
       "fmasz6@gmail.com",
-      0,
+      "0",
       "Legs",
       30,
       66.14,
@@ -30,7 +30,7 @@ let workoutTypes = {
     [
       3,
       "fmasz6@gmail.com",
-      0,
+      "0",
       "Back",
       80,
       179.37,
@@ -39,47 +39,11 @@ let workoutTypes = {
     [
       4,
       "fmasz6@gmail.com",
-      0,
+      "3/31/2025, 4:03:02 PM",
       "Chest",
-      30,
-      66.14,
-      0.5
-    ],
-    [
-      5,
-      "fmasz6@gmail.com",
-      0,
-      "Gluts",
-      25,
-      55.12,
-      0.5
-    ],
-    [
-      6,
-      "fmasz6@gmail.com",
-      "3/30/2025, 9:27:30 PM",
-      "",
-      "0",
-      "0",
-      ""
-    ],
-    [
-      7,
-      "fmasz6@gmail.com",
-      "3/30/2025, 9:27:54 PM",
-      "Warm-up",
-      "0",
-      "0",
+      "25",
+      "55.12",
       "2"
-    ],
-    [
-      8,
-      "fmasz6@gmail.com",
-      "3/30/2025, 9:33:19 PM",
-      "Warm-up2",
-      "30",
-      "66.14",
-      "1"
     ]
   ]
 };
