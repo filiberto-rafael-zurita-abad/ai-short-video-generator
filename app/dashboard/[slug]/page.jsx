@@ -17,13 +17,13 @@ export default async function CardPage({ params }) {
       <Banner title={card.title} content={card.content} />
       {slug === "dashboard-content-2" && (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-4 ">
-          <Card
+<Card
             title="Card 1: Workout App"
-            content="This is the first card."
             buttonText="Add Excercise"
             slug="/dashboard-content-2"
             className="!w-full grid grid-cols-1 gap-4"
             handlerType="none"
+            inputFields={["(dw, WorkoutTypes, Name) - Select Workout Types", "VA- 10 - Hello"]}
           />
           <Card
             title="Card 2: Add Workout"

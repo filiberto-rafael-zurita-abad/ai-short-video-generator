@@ -92,6 +92,14 @@ export default function Card({ title, content, buttonText, slug, showButton, tab
     }
   };
 
+  // Function to extract dropdown options
+  const getDropdownOptions = (table, column) => {
+    if (table === "WorkoutTypes" && column === "Name") {
+      return workoutTypes.rows.map(row => row[3]); // Assuming "Name" is the 4th column (index 3)
+    }
+    return [];
+  };
+
   return (
     
       <div className={`flex flex-col justify-between border rounded-md p-4 w-95  ${className || ""}`}>
@@ -113,61 +121,95 @@ export default function Card({ title, content, buttonText, slug, showButton, tab
 
               let inputField;
 
-              switch (type) {
-                case "QS":
-                  inputField = <QuantitySelector title={title} />;
-                  break;
-                case "VA":
-                  inputField = <ValueAdjuster title={title} />;
-                  break;
-                case "CUI":
-                  inputField = <CalendarUI title={title} />;
-                  break;
-                case "TS":
-                  inputField = <TimeSelector title={title} />;
-                  break;
-                default:
-                  let inputValue = "";
-                  let onChangeHandler = null;
+              if (inputFieldTitle.includes("(dw,")) {
+                // Extract table and column from inputFieldTitle
+                const regex = /\(dw,\s*(\w+)\s*,\s*(\w+)\s*\)\s*-\s*(.+)/;
+                const match = inputFieldTitle.match(regex);
 
-                  if (title === "Workout Name") {
-                    inputValue = workoutName;
-                    onChangeHandler = (e) => {
-                      setWorkoutName(e.target.value);
-                    };
-                  } else if (title === "Weight (Kg)") {
-                    inputValue = weightKg;
-                    onChangeHandler = (e) => {
-                      const newWeightKg = e.target.value;
-                      setWeightKg(newWeightKg);
-                      setWeightLb(kgToLb(newWeightKg));
-                    };
-                  } else if (title === "Weight (lb)") {
-                    inputValue = weightLb;
-                    onChangeHandler = (e) => {
-                      const newWeightLb = e.target.value;
-                      setWeightLb(newWeightLb);
-                      setWeightKg(lbToKg(newWeightLb));
-                    };
-                  } else if (title === "CRP") {
-                    inputValue = CRP;
-                    onChangeHandler = (e) => {
-                      setCRP(e.target.value);
-                    };
-                  }
+                if (match) {
+                  const table = match[1];
+                  const column = match[2];
+                  const dropdownTitle = match[3]; // Extract the dropdown title
+                  const dropdownOptions = getDropdownOptions(table, column);
 
                   inputField = (
                     <div>
-                      <label htmlFor={`input-field-${index}`}>{title}</label>
-                      <input
-                        type="text"
-                        id={`input-field-${index}`}
+                      <label htmlFor={`dropdown-${index}`}>{dropdownTitle}:</label>
+                      <select
+                        id={`dropdown-${index}`}
                         className="border rounded-md p-2 w-full"
-                        value={inputValue}
-                        onChange={onChangeHandler}
-                      />
+                        onChange={(e) => setWorkoutName(e.target.value)}
+                        value={workoutName}
+                      >
+                        <option value="">Select a workout</option>
+                        {dropdownOptions.map((option, i) => (
+                          <option key={i} value={option}>
+                            {option}
+                          </option>
+                        ))}
+                      </select>
                     </div>
                   );
+                } else {
+                  inputField = <div>Invalid dropdown format</div>;
+                }
+              } else {
+                switch (type) {
+                  case "QS":
+                    inputField = <QuantitySelector title={title} />;
+                    break;
+                  case "VA":
+                    inputField = <ValueAdjuster title={title} />;
+                    break;
+                  case "CUI":
+                    inputField = <CalendarUI title={title} />;
+                    break;
+                  case "TS":
+                    inputField = <TimeSelector title={title} />;
+                    break;
+                  default:
+                    let inputValue = "";
+                    let onChangeHandler = null;
+
+                    if (title === "Workout Name") {
+                      inputValue = workoutName;
+                      onChangeHandler = (e) => {
+                        setWorkoutName(e.target.value);
+                      };
+                    } else if (title === "Weight (Kg)") {
+                      inputValue = weightKg;
+                      onChangeHandler = (e) => {
+                        const newWeightKg = e.target.value;
+                        setWeightKg(newWeightKg);
+                        setWeightLb(kgToLb(newWeightKg));
+                      };
+                    } else if (title === "Weight (lb)") {
+                      inputValue = weightLb;
+                      onChangeHandler = (e) => {
+                        const newWeightLb = e.target.value;
+                        setWeightLb(newWeightLb);
+                        setWeightKg(lbToKg(newWeightLb));
+                      };
+                    } else if (title === "CRP") {
+                      inputValue = CRP;
+                      onChangeHandler = (e) => {
+                        setCRP(e.target.value);
+                      };
+                    }
+
+                    inputField = (
+                      <div>
+                        <label htmlFor={`input-field-${index}`}>{title}</label>
+                        <input
+                          type="text"
+                          id={`input-field-${index}`}
+                          className="border rounded-md p-2 w-full"
+                          value={inputValue}
+                          onChange={onChangeHandler}
+                        />
+                      </div>
+                    );
+                }
               }
 
               return (
