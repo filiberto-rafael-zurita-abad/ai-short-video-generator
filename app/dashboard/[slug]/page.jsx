@@ -23,7 +23,7 @@ export default async function CardPage({ params }) {
             slug="/dashboard-content-2"
             className="!w-full grid grid-cols-1 gap-4"
             handlerType="none"
-            inputFields={["(dw, WorkoutTypes, Name) - Select Workout Types", "VA- 10 - Hello"]}
+            inputFields={["(dw, WorkoutTypes, Name) - Select Workout Type"]}
           />
           <Card
             title="Card 2: Add Workout"

@@ -80,4 +80,40 @@ const TimeSelector = ({ title }) => {
   );
 };
 
-export { QuantitySelector, ValueAdjuster, CalendarUI, TimeSelector };
+const Dropdown = ({ title, options, value, onChange }) => {
+  return (
+    <div>
+      <label htmlFor={`dropdown-${title}`}>{title}:</label>
+      <select
+        id={`dropdown-${title}`}
+        className="border rounded-md p-2 w-full"
+        onChange={onChange}
+        value={value}
+      >
+        <option value="">Select an option</option>
+        {options.map((option, i) => (
+          <option key={i} value={option}>
+            {option}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+};
+
+const TextInput = ({ title, value, onChange }) => {
+  return (
+    <div>
+      <label htmlFor={`input-field-${title}`}>{title}</label>
+      <input
+        type="text"
+        id={`input-field-${title}`}
+        className="border rounded-md p-2 w-full"
+        value={value}
+        onChange={onChange}
+      />
+    </div>
+  );
+};
+
+export { QuantitySelector, ValueAdjuster, CalendarUI, TimeSelector, Dropdown, TextInput };
