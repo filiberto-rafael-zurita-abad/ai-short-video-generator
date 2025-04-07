@@ -20,7 +20,9 @@ const InputFieldsBox = ({ inputfields }) => {
   return (
     <div className={gridClass}>
       {inputfields && inputfields.map((field, index) => {
-        const [title, type, name] = field.split(" - ");
+        const [title, type] = field.split(" - ");
+        // Generate a unique name/id
+        const name = title.toLowerCase().replace(/[^a-z0-9]/g, '');
         return (
           <div key={index}>
             <label htmlFor={name} className="block text-sm font-medium text-gray-700">{title}</label>

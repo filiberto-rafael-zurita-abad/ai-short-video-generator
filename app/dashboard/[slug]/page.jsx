@@ -21,10 +21,10 @@ export default async function CardPage({ params }) {
             slug="card-1"
             className="!w-full"
             inputfields={[
-              "Workout Name - Text - workoutName",
-              "Sets - number - Sets",
-              "Reps - number - Reps",
-              "Weight - number - Weight (kg)",
+              "Workout Name - Text",
+              "Sets - number",
+              "Reps per Set - number",
+              "Weight (Kg) - number",
             ]}
           />
           <Card
