@@ -4,7 +4,17 @@ import { eq } from 'drizzle-orm';
 
 export const getWorkoutHistory = async () => {
   try {
-    const result = await db.select().from(WorkoutHistory);
+    const result = await db.select({
+      id: WorkoutHistory.id,
+      userId: WorkoutHistory.userId,
+      datetime: WorkoutHistory.datetime,
+      type: WorkoutHistory.type,
+      weight: WorkoutHistory.weight,
+      series: WorkoutHistory.series,
+      reps: WorkoutHistory.reps,
+      cpr: WorkoutHistory.cpr,
+      calories: WorkoutHistory.calories,
+    }).from(WorkoutHistory);
     return result;
   } catch (error) {
     console.error("Error fetching workout history:", error);
@@ -22,10 +32,3 @@ export const deleteRow = async (id) => {
     return null;
   }
 };
-
-const WorkoutHistoryData = {
-    headers: ["Id","User", "Date", "Time", "Type","Weight", "Reps","Calories", "Start Time", "End Time", "Total Time", "Note"],
-    rows: []
-  };
-  
-  export default WorkoutHistoryData;
