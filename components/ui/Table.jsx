@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { XMarkIcon } from '@heroicons/react/20/solid';
 import { deleteRow } from '@/app/dashboard/(data)/WorkoutHistoryData';
 
@@ -8,21 +8,19 @@ export default function Table({ rows, headers, setWorkoutData }) {
   const [currentPage, setCurrentPage] = useState(1);
   const rowsPerPage = 5;
 
-  // Calculate the index of the first and last row to display on the current page
   const indexOfLastRow = currentPage * rowsPerPage;
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
   const currentRows = rows.slice(indexOfFirstRow, indexOfLastRow);
 
-  // Function to handle page changes
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const paginate = useCallback((pageNumber) => setCurrentPage(pageNumber), []);
 
-  // Function to handle row deletion
-  const handleDeleteRow = (index) => {
-    const idToDelete = rows[index][0]; // Get the id of the row to delete
-    const updatedWorkoutData = deleteRow(idToDelete);
-    setWorkoutData(updatedWorkoutData);
+  const handleDeleteRow = useCallback((index) => {
+    const idToDelete = rows[index][0];
+    deleteRow(idToDelete).then(() => {
+      getWorkoutHistory(setWorkoutData);
+    });
     setCurrentPage(1);
-  };
+  }, [rows, setWorkoutData]);
 
   const pageNumbers = [];
   for (let i = 1; i <= Math.ceil(rows.length / rowsPerPage); i++) {

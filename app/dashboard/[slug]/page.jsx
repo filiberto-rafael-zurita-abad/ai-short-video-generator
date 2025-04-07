@@ -17,10 +17,15 @@ export default async function CardPage({ params }) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-4">
           <Card
             title="Card 1: Workout App"
-            content="This is the first card."
             buttonText="Click me"
             slug="card-1"
             className="!w-full"
+            inputfields={[
+              "Workout Name - Text - workoutName",
+              "Sets - number - Sets",
+              "Reps - number - Reps",
+              "Weight - number - Weight (kg)",
+            ]}
           />
           <Card
             title="Card 2: Add Workout"
@@ -48,7 +53,8 @@ export default async function CardPage({ params }) {
           <Card 
             title="Card 4: Workout Types"
             className="!w-full"
-            showButton={false}          
+            showButton={false}
+            
         />
         </div>
       )}
