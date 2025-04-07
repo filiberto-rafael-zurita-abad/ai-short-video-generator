@@ -1,13 +1,19 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 import Table from "./Table";
+import { useState } from 'react';
+import WorkoutHistoryData from "@/app/dashboard/(data)/WorkoutHistoryData";
 
 export default function Card({ title, content, buttonText, slug, className, showButton, 
   tableData, children }) {
+    const [workoutData, setWorkoutData] = useState(tableData);
+
   return (
     
-      <div className={`border rounded-md p-4 w-95 h-62 ${className || ""}`}>
+      <div className={`border rounded-md p-4 ${className || ""}`}>
 
         {/*Title*/}
         <div className="flex justify-between items-center">
@@ -18,7 +24,7 @@ export default function Card({ title, content, buttonText, slug, className, show
         {content && <p className="overflow-hidden text-ellipsis whitespace-normal h-32">{content}</p>}
 
         {/*Table*/}
-        {tableData && <Table tableData={tableData} />}
+        {workoutData && <Table rows={workoutData.rows} headers={workoutData.headers} setWorkoutData={setWorkoutData} />}
 
         {children}
 
