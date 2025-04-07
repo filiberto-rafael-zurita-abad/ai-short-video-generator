@@ -1,8 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { UserButton } from "@clerk/nextjs";
 import Link from "next/link";
+import Table from "./Table";
 
-export default function Card({ title, content, buttonText, slug, className, showButton, tableData, children }) {
+export default function Card({ title, content, buttonText, slug, className, showButton, 
+  tableData, children }) {
   return (
     
       <div className={`border rounded-md p-4 w-95 h-62 ${className || ""}`}>
@@ -16,26 +18,8 @@ export default function Card({ title, content, buttonText, slug, className, show
         {content && <p className="overflow-hidden text-ellipsis whitespace-normal h-32">{content}</p>}
 
         {/*Table*/}
-        {tableData && (
-          <table>
-            <thead>
-              <tr>
-                {tableData.headers.map((header, index) => (
-                  <th key={index}>{header}</th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {tableData.rows.map((row, index) => (
-                <tr key={index}>
-                  {row.map((cell, index) => (
-                    <td key={index}>{cell}</td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
+        {tableData && <Table tableData={tableData} />}
+
         {children}
 
 

@@ -1,4 +1,4 @@
-const tableData = {
+const WorkoutHistoryData = {
   headers: ["Id","User", "Date", "Time", "Type","Weight", "Reps","Calories", "Start Time", "End Time", "Total Time", "Note"],
   rows: [
     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -9,4 +9,4 @@ const tableData = {
   ],
 };
 
-export default tableData;
+export default WorkoutHistoryData;

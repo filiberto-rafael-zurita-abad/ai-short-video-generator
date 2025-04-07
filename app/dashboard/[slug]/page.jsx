@@ -1,7 +1,7 @@
 import { cardsData } from "@/app/dashboard/(data)/cardsData";
 import Banner from "@/components/ui/Banner";
 import Card from "@/components/ui/Card";
-import tableData from "@/app/dashboard/(data)/TableCard"; 
+import WorkoutHistoryData from "@/app/dashboard/(data)/WorkoutHistoryData"; 
 
 export default async function CardPage({ params }) {
   const { slug } = await params;
@@ -39,7 +39,7 @@ export default async function CardPage({ params }) {
             title="Card 3: Workout History"
             className="!w-full"
             showButton={false}
-            tableData={tableData}
+            tableData={WorkoutHistoryData}
         />
         </div>
       )}
