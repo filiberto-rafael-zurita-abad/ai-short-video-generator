@@ -20,7 +20,8 @@ export default function Table({ rows, headers, setWorkoutData }) {
     const handleDeleteRow = (index) => {
         console.log("handleDeleteRow called"); // Added console.log
         console.log("Deleting index: ", index); // Added console.log
-        const updatedWorkoutData = deleteRow(index);
+        const idToDelete = rows[index][0]; // Get the id of the row to delete
+        const updatedWorkoutData = deleteRow(idToDelete);
         setWorkoutData(updatedWorkoutData);
         //console.log("WorkoutHistoryData.rows after deletion: ", WorkoutHistoryData.rows); // Added console.log
         setCurrentPage(1);
