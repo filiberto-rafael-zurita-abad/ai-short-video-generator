@@ -12,9 +12,9 @@ const InputFieldsBox = ({ inputfields }) => {
   if (inputfields.length === 1) {
     gridClass += " grid-cols-1";
   } else if (inputfields.length === 2) {
-    gridClass += " grid-cols-2";
+    gridClass += " lg:grid-cols-2 sm:grid-cols-1";
   } else if (inputfields.length >= 3) {
-    gridClass += " grid-cols-2";
+    gridClass += "  lg:grid-cols-2 sm:grid-cols-1";
   }
 
   return (
@@ -28,7 +28,7 @@ const InputFieldsBox = ({ inputfields }) => {
               type={type === "number" ? "number" : "text"}
               name={name}
               id={name}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm text-lg p-2"
             />
           </div>
         );
