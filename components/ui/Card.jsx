@@ -9,7 +9,7 @@ import { useState, useEffect } from 'react';
 import { getWorkoutHistory } from "@/app/dashboard/(data)/WorkoutHistoryData";
 
 export default function Card({ title, content, buttonText, slug, className, showButton,
-  tableData, children, inputfields }) {
+  tableData, children, inputfields, cardId }) {
   const [workoutData, setWorkoutData] = useState(null);
 
   useEffect(() => {
@@ -31,7 +31,7 @@ export default function Card({ title, content, buttonText, slug, className, show
       {content && <p className="overflow-hidden text-ellipsis whitespace-normal h-32">{content}</p>}
 
       {/*Input Fields*/}
-      <InputFieldsBox inputfields={inputfields} />
+      <InputFieldsBox inputfields={inputfields} cardId={cardId} />
 
       {/*Table*/}
       {workoutData && <Table rows={workoutData.rows} headers={workoutData.headers} setWorkoutData={getWorkoutHistory} />}
